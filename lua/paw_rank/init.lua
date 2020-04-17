@@ -11,6 +11,9 @@ MODULE.Rank = MODULE.Rank or {}
 MODULE.Config = MODULE.Config or {}
 
 for k, dir in pairs(MODULE.FILESYSTEM) do
+
+    MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loading dir "'..dir..'"...\n')
+
     local files = file.Find(MODULE.MAIN_ROOT..'/'..dir..'/*', 'LUA')
 
     for k, v in pairs(files) do
@@ -19,7 +22,7 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
                 local load = include(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
                 if load then load() end
 
-                MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" from "'..dir..'" successfully\n')
+                MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
             end 
         end 
 
@@ -31,7 +34,7 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
 
             AddCSLuaFile(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
 
-            MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" from "'..dir..'" successfully\n')
+            MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
         end
 
         if string.StartWith(v, 'sh') then
@@ -40,9 +43,12 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
 
             AddCSLuaFile(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
 
-            MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" from "'..dir..'" successfully\n')
+            MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
         end 
     end 
+
+    MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded dir "'..dir..'" successfully\n')
+
 end
 
 for k, v in pairs(MODULE.NETS) do
