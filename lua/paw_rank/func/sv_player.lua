@@ -202,7 +202,7 @@ end
     usage:  MODULE.Ply:SetName(player Player, string Name, number Job = Player:Team(), player Actor)
 */
 
-function MODULE.Ply:SetName(pPlayer, sName, nJob)
+function MODULE.Ply:SetName(pPlayer, sName, nJob, pActor)
 
     if !db:Init() then db:Init() end
 
@@ -211,6 +211,8 @@ function MODULE.Ply:SetName(pPlayer, sName, nJob)
     local tData = MODULE.Ply:Init(pPlayer)
     local sJob = team.GetName(nJob)
 
+    local sOldName = MODULE.API:GetName(pPlayer)
+
     if tData[sJob] then
         tData[sJob].Name = sName
 
@@ -218,6 +220,8 @@ function MODULE.Ply:SetName(pPlayer, sName, nJob)
 
         MODULE.Ply:UpdateName(pPlayer)
         writePlayerFile(pPlayer, tData)
+
+        hook.Run('Paws.'..MODULE.UID..'.Name.Change', pPlayer, pActor, sName, sOldName, nJob)
     end
 
 end
@@ -227,13 +231,15 @@ end
     usage:  MODULE.Ply:SetNumber(player Player, string Number, number Job = Player:Team(), player Actor)
 */
 
-function MODULE.Ply:SetNumber(pPlayer, sNumber, nJob)
+function MODULE.Ply:SetNumber(pPlayer, sNumber, nJob, pActor)
     if !db:Init() then db:Init() end
 
     if !nJob then nJob = pPlayer:Team() end
 
     local tData = MODULE.Ply:Init(pPlayer)
     local sJob = team.GetName(nJob)
+
+    local sOldNumber = MODULE.API:GetNumber(pPlayer)
 
     if tData[sJob] then
         tData[sJob].Number = sName
@@ -242,6 +248,8 @@ function MODULE.Ply:SetNumber(pPlayer, sNumber, nJob)
 
         MODULE.Ply:UpdateName(pPlayer)
         writePlayerFile(pPlayer, tData)
+
+        hook.Run('Paws.'..MODULE.UID..'.Number.Change', pPlayer, pActor, sNumber, sOldNumber, nJob)
     end
 end
 
@@ -250,13 +258,15 @@ end
     usage:  MODULE.Ply:SetRank(player Player, string Rank, number Job = Player:Team(), player Actor)
 */
 
-function MODULE.Ply:SetRank(pPlayer, sRank, nJob)
+function MODULE.Ply:SetRank(pPlayer, sRank, nJob, pActor)
     if !db:Init() then db:Init() end
 
     if !nJob then nJob = pPlayer:Team() end
 
     local tData = MODULE.Ply:Init(pPlayer)
     local sJob = team.GetName(nJob)
+
+    local sOldRank = MODULE.API:GetRank(pPlayer)
 
     if tData[sJob] then
         tData[sJob].Rank = sName
@@ -265,5 +275,7 @@ function MODULE.Ply:SetRank(pPlayer, sRank, nJob)
 
         MODULE.Ply:UpdateName(pPlayer)
         writePlayerFile(pPlayer, tData)
+
+        hook.Run('Paws.'..MODULE.UID..'.Rank.Change', pPlayer, pActor, sRank, sOldRank, nJob)
     end
 end
