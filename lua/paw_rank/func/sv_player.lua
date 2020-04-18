@@ -198,10 +198,10 @@ end
 
 /*
     Player set name
-    usage:  MODULE.Ply:SetName(player Player, string Name, number Job = Player:Team(), player Actor)
+    usage:  MODULE.Ply:SetName(player Player, string Name, player Actor, number Job = Player:Team() )
 */
 
-function MODULE.Ply:SetName(pPlayer, sName, nJob, pActor)
+function MODULE.Ply:SetName(pPlayer, sName, pActor, nJob)
 
     if !db:Init() then db:Init() end
 
@@ -230,7 +230,7 @@ end
     usage:  MODULE.Ply:SetNumber(player Player, string Number, number Job = Player:Team(), player Actor)
 */
 
-function MODULE.Ply:SetNumber(pPlayer, sNumber, nJob, pActor)
+function MODULE.Ply:SetNumber(pPlayer, sNumber, pActor, nJob)
     if !db:Init() then db:Init() end
 
     if !nJob then nJob = pPlayer:Team() end
@@ -257,7 +257,7 @@ end
     usage:  MODULE.Ply:SetRank(player Player, string Rank, number Job = Player:Team(), player Actor)
 */
 
-function MODULE.Ply:SetRank(pPlayer, sRank, nJob, pActor)
+function MODULE.Ply:SetRank(pPlayer, sRank, pActor, nJob)
     if !db:Init() then db:Init() end
 
     if !nJob then nJob = pPlayer:Team() end
