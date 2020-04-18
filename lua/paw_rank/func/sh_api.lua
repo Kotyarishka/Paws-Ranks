@@ -22,7 +22,7 @@ end
 
 /*
     Get current number 
-    usage: MODULE.API:GetName(player Player)
+    usage: MODULE.API:GetNumber(player Player)
 */
 
 function MODULE.API:GetNumber(pPlayer)
@@ -31,7 +31,7 @@ end
 
 /*
     Get current rank 
-    usage: MODULE.API:GetName(player Player)
+    usage: MODULE.API:GetRank(player Player)
 */
 
 function MODULE.API:GetRank(pPlayer)
@@ -40,11 +40,26 @@ end
 
 /*
     Get current rank (formatted)
-    usage: MODULE.API:GetName(player Player)
+    usage: MODULE.API:GetRankFormatted(player Player)
 */
 
 function MODULE.API:GetRankFormatted(pPlayer)
     local sRankToReturn = pPlayer:GetNWString( 'Paws.'..MODULE.UID..'.Rank', false )
+    
+    local tJob = RPExtraTeams[pPlayer:Team()]
+    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+
+    if tFactionConfig.Rank.Config[sRank] then
+        sRankToReturn = tFactionConfig.Rank.Config[sRank]
+    else
+        sRankToReturn = string.upper(sRankToReturn)
+    end
+    
+    return sRankToReturn
+end
+
+function MODULE.API:FormatRank(pPlayer, sRank)
+    local sRankToReturn = sRank
     
     local tJob = RPExtraTeams[pPlayer:Team()]
     local tFactionConfig = MODULE.Config.Factions[tJob.faction]
