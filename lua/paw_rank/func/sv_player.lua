@@ -208,14 +208,6 @@ function MODULE.Ply:LoadJob(pPlayer)
     local tData = MODULE.Ply:Init(pPlayer)
     local sJob = team.GetName(pPlayer:Team())
 
-    if !nOldJob then
-        nOldJob = pPlayer:Team()
-    end
-
-    if !nNewJob then
-        nNewJob = pPlayer:Team()
-    end
-
     if !tData[sJob] then
         return MODULE.Ply.AddJob(pPlayer)
     else
@@ -227,6 +219,49 @@ function MODULE.Ply:LoadJob(pPlayer)
 
         MODULE.Ply:UpdateName(pPlayer)
     end
+    
+    return tData[sJob]
+
+end
+
+/*
+    Player init job function
+    usage: MODULE.Ply:InitJob(player Player, number Old Job, number New Job)
+*/
+
+function MODULE.Ply:LoadJob(pPlayer)
+    
+    if !db:Init() then db:Init() end
+
+    local tData = MODULE.Ply:Init(pPlayer)
+    local sJob = team.GetName(pPlayer:Team())
+
+    local tJob = RPExtraTeams[pPlayer:Team()]
+    local tRanks = tJob.ranks
+    
+    if tRanks[MODULE.API:GetRank(pPlayer)] then
+
+        local tRankInfo = tRanks[MODULE.API:GetRank(pPlayer)]
+
+        pPlayer:SetMaxHealth(tRankInfo.hp)
+        pPlayer:SetHealth(tRankInfo.hp)
+
+        pPlayer:SetArmor(tRankInfo.armor)
+
+        if istable(tRankInfo.model) then
+            local nModelID = math.random(1, table.Count(tRankInfo.model))
+            
+            pPlayer:SetModel(tRankInfo.model[nModelID])
+        else
+            pPlayer:SetModel(tRankInfo.model)
+        end
+
+        if tRankInfo.customFunc then
+            tRankInfo.customFunc(pPlayer)
+        end
+
+    end
+
     
     return tData[sJob]
 
