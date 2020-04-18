@@ -74,7 +74,7 @@ local function getDefaultNumber(pPlayer, nOldJob, nNewJob)
     end
 
     return sNumber
-end
+end 
 
 local function getDefaultRank(pPlayer, nOldJob, nNewJob)
 
@@ -194,6 +194,42 @@ function MODULE.Ply:RemoveJob(pPlayer, nJob)
         table.Empty(tData[sJob])
         writePlayerFile(pPlayer, tData)
     end
+end
+
+/*
+    Player load job function
+    usage: MODULE.Ply:LoadJob(player Player, number Old Job, number New Job)
+*/
+
+function MODULE.Ply:LoadJob(pPlayer)
+    
+    if !db:Init() then db:Init() end
+
+    local tData = MODULE.Ply:Init(pPlayer)
+    local sJob = team.GetName(pPlayer:Team())
+
+    if !nOldJob then
+        nOldJob = pPlayer:Team()
+    end
+
+    if !nNewJob then
+        nNewJob = pPlayer:Team()
+    end
+
+    if !tData[sJob] then
+        return MODULE.Ply.AddJob(pPlayer)
+    else
+        local tDataC = tData[sJob]
+
+        pPlayer:SetNWString('Paws.'..MODULE.UID..'.Name', tDataC.Name)
+        pPlayer:SetNWString('Paws.'..MODULE.UID..'.Number', tDataC.Number)
+        pPlayer:SetNWString('Paws.'..MODULE.UID..'.Rank', tDataC.Rank)
+
+        MODULE.Ply:UpdateName(pPlayer)
+    end
+    
+    return tData[sJob]
+
 end
 
 /*
