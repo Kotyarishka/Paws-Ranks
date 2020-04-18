@@ -21,8 +21,6 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
             if SERVER then
                 local load = include(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
                 if load then load() end
-
-                MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
             end 
         end 
 
@@ -33,8 +31,6 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
             end
 
             AddCSLuaFile(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
-
-            MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
         end
 
         if string.StartWith(v, 'sh') then
@@ -42,9 +38,9 @@ for k, dir in pairs(MODULE.FILESYSTEM) do
             if load then load() end
 
             AddCSLuaFile(MODULE.MAIN_ROOT..'/'..dir..'/'..v)
-
-            MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
         end 
+
+        MsgC(Color(190, 252, 3), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded "'..v..'" successfully\n')
     end 
 
     MsgC(Color(0, 255, 0), '[Aw... Paws!]', '['..MODULE.Title..']', ' Loaded dir "'..dir..'" successfully\n')
