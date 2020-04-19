@@ -32,3 +32,13 @@ hook.Add('PlayerSpawn', 'Paws.'..MODULE.UID..'.Load.Sapwn.Player', function(pPla
         ply:InitJob(pPlayer)
     end)
 end)
+
+/*
+    Load rank after change.
+*/
+
+hook.Add('Paws.'..MODULE.UID..'.Rank.Change', 'Paws.'..MODULE.UID..'.Rank.Change', function(pPlayer, pActor, sRank, sOldRank, nJob)
+    // timer.Simple(5, function()
+        ply:InitJob(pPlayer)
+    // nd)    
+end)
