@@ -27,7 +27,7 @@ hook.Add('Paws.'..MODULE.UID..'.Number.Change', 'Paws.'..MODULE.UID..'.Number.Ch
 
 end)
 
-hook.Add('Paws.'..MODULE.UID..'.Rank.Change', 'Paws.'..MODULE.UID..'.Number.Change', function(pPlayer, pActor, sRank, sOldRank, nJob)
+hook.Add('Paws.'..MODULE.UID..'.Rank.Change', 'Paws.'..MODULE.UID..'.Rank.Change', function(pPlayer, pActor, sRank, sOldRank, nJob)
     
     Paws.Lib:SendMessage(pActor, messages.SUCCESS, 'Вы установили новое звание для ', messages.SUCCESS_COLOR, api:GetName(pPlayer), messages.NONE_COLOR, '. Его новое звание: ', messages.SUCCESS_COLOR, '"', api:RankFormat(pPlayer, sRank), '"', messages.NONE_COLOR, '.')
     Paws.Lib:SendMessage(pPlayer, messages.SUCCESS, 'Вам установлено звание ', messages.SUCCESS_COLOR, '"', api:RankFormat(pPlayer, sRank), '"', messages.NONE_COLOR, '. Установил ', pActor:Name(), '.')
