@@ -6,7 +6,7 @@ Made by Kot from "🐾 Aw... Paws!"
 
 */
 
-local MODULE = Paws.Lib.Module('rank')
+local MODULE = PAW_MODULE('ranks')
 MODULE.Config = MODULE.Config or {}
 
 MODULE.API = {}
@@ -17,7 +17,7 @@ MODULE.API = {}
 */
 
 function MODULE.API:GetName(pPlayer)
-    return pPlayer:GetNWString( 'Paws.'..MODULE.UID..'.Name', false )
+    return pPlayer:GetNWString( 'Paws.'..MODULE.uID..'.Name', nil )
 end
 
 /*
@@ -26,7 +26,7 @@ end
 */
 
 function MODULE.API:GetNumber(pPlayer)
-    return pPlayer:GetNWString( 'Paws.'..MODULE.UID..'.Number', false )
+    return pPlayer:GetNWString( 'Paws.'..MODULE.uID..'.Number', nil )
 end
 
 /*
@@ -35,7 +35,7 @@ end
 */
 
 function MODULE.API:GetRank(pPlayer)
-    return pPlayer:GetNWString( 'Paws.'..MODULE.UID..'.Rank', false )
+    return pPlayer:GetNWString( 'Paws.'..MODULE.uID..'.Rank', nil )
 end
 
 /*
@@ -44,10 +44,10 @@ end
 */
 
 function MODULE.API:GetRankFormatted(pPlayer)
-    local sRankToReturn = pPlayer:GetNWString( 'Paws.'..MODULE.UID..'.Rank', false )
+    local sRankToReturn = pPlayer:GetNWString( 'Paws.'..MODULE.uID..'.Rank', nil )
     
     local tJob = RPExtraTeams[pPlayer:Team()]
-    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+    local tFactionConfig = MODULE.Config.Factions[tJob.fraction]
 
     if tFactionConfig.Rank.Config[sRank] then
         sRankToReturn = tFactionConfig.Rank.Config[sRank]
@@ -62,9 +62,9 @@ function MODULE.API:FormatRank(pPlayer, sRank)
     local sRankToReturn = sRank
     
     local tJob = RPExtraTeams[pPlayer:Team()]
-    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+    local tFactionConfig = MODULE.Config.Factions[tJob.fraction]
 
-    if tFactionConfig.Rank.Config[sRank] then
+    if table.HasValue(tFactionConfig.Rank.Config, sRank) then
         sRankToReturn = tFactionConfig.Rank.Config[sRank]
     else
         sRankToReturn = string.upper(sRankToReturn)

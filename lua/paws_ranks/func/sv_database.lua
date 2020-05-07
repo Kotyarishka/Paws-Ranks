@@ -6,7 +6,7 @@ Made by Kot from "🐾 Aw... Paws!"
 
 */
 
-local MODULE = Paws.Lib.Module('rank')
+local MODULE = PAW_MODULE('ranks')
 MODULE.Config = MODULE.Config or {}
 
 MODULE.Database = {}
@@ -16,7 +16,7 @@ MODULE.Database = {}
 */
 
 function MODULE.Database:Init()
-    local path = 'paws/'..MODULE.UID..'/'
+    local path = 'paws/'..MODULE.uID..'/'
 
     if !file.Exists(path, 'DATA') then
         file.CreateDir(path)
