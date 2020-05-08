@@ -73,7 +73,7 @@ function MODULE.Ply:InitPlayer(pPlayer)
         file.Write(sPath, '[]')
     end
 
-    local tData = util.JSONToTable(file.Read(sPath))
+    local tData = util.JSONToTable(file.Read(sPath) or '[]')
 
     return tData
 end

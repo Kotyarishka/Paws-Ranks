@@ -6,36 +6,37 @@ Made by Kot from "🐾 Aw... Paws!"
 
 */
 
-local MODULE = PAW_MODULE('rank')
-MODULE.Config = MODULE.Config or {}
+local MODULE = PAW_MODULE('ranks')
 
-MODULE.Config.Factions = {
-    [1] = {
-        Faction = {
-            Name = 'ВАР',
-            Icon = ''
-        },
-        Rank = {
-            use = true, 
-            Config = {
-                ['msg'] = 'MSG'
+MODULE.Config = {
+    Factions = {
+        [1] = {
+            Faction = {
+                Name = 'ВАР',
+                Icon = ''
             },
-        },
-        Number = {
-            use = true,
-        },
-        Name = {
-            use = true,
+            Rank = {
+                use = true, 
+                Config = {
+                    ['msg'] = 'MSG'
+                },
+            },
+            Number = {
+                use = true,
+            },
+            Name = {
+                use = true,
+            }
         }
-    }
-}
+    }, 
 
-MODULE.Config.Permissions = {
-    ['superadmin'] = {
-        '*'
-    },
-    ['mc'] = {
-        'trp',
-        'pvt'
+    Permissions = {
+        ['superadmin'] = {
+            '*'
+        },
+        ['mc'] = {
+            'trp',
+            'pvt'
+        }
     }
 }
