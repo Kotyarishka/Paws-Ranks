@@ -81,7 +81,7 @@ end
 function MODULE.Ply:UpdateName(pPlayer)
     local tNameToReturn = {}
     local tJob = RPExtraTeams[pPlayer:Team()]
-    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+    local tFactionConfig = MODULE.Config.Factions[tJob.faction] or MODULE.Config.Factions.Default
 
     if tFactionConfig.Rank.use then
         table.insert(tNameToReturn, MODULE.API:GetRankFormatted(pPlayer))

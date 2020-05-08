@@ -27,6 +27,22 @@ MODULE.Config = {
             Name = {
                 use = true,
             }
+        },
+        Default = {
+            Faction = {
+                Name = 'Стандартная',
+                Icon = ''
+            },
+            Rank = {
+                use = false, 
+                Config = {},
+            },
+            Number = {
+                use = false,
+            },
+            Name = {
+                use = true,
+            }
         }
     }, 
 

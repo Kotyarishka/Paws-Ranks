@@ -47,7 +47,7 @@ function MODULE.API:GetRankFormatted(pPlayer)
     local sRankToReturn = pPlayer:GetNWString( 'Paws.'..MODULE.uID..'.Rank', nil )
     
     local tJob = RPExtraTeams[pPlayer:Team()]
-    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+    local tFactionConfig = MODULE.Config.Factions[tJob.faction] or MODULE.Config.Factions.Default
 
     if tFactionConfig.Rank.Config[sRank] then
         sRankToReturn = tFactionConfig.Rank.Config[sRank]
@@ -62,7 +62,7 @@ function MODULE.API:FormatRank(pPlayer, sRank)
     local sRankToReturn = sRank
     
     local tJob = RPExtraTeams[pPlayer:Team()]
-    local tFactionConfig = MODULE.Config.Factions[tJob.faction]
+    local tFactionConfig = MODULE.Config.Factions[tJob.faction] or MODULE.Config.Factions.Default
 
     if table.HasValue(tFactionConfig.Rank.Config, sRank) then
         sRankToReturn = tFactionConfig.Rank.Config[sRank]
