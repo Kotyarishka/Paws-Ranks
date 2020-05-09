@@ -18,7 +18,7 @@ MODULE.Config = {
             Rank = {
                 use = true, 
                 Config = {
-                    ['msg'] = 'MSG'
+                    ['cadet'] = 'Cadet'
                 },
             },
             Number = {
@@ -52,7 +52,54 @@ MODULE.Config = {
         },
         ['mc'] = {
             'trp',
-            'pvt'
+            'pvt',
+            'pfc',
+            'cpl',
+            'sgt',
+            'shs',
+            'sfc',
+            'msg',
+            'lt',
+            'ltc',
+            'cpt',
+            'maj',
+            'lc',
+            'col',
+            'cc',
+            'mcc',
+        },
+        ['mcc'] = {
+            'trp',
+            'pvt',
+            'pfc',
+            'cpl',
+            'sgt',
+            'shs',
+            'sfc',
+            'msg',
+            'lt',
+            'ltc',
+            'cpt',
+            'maj',
+            'lc',
+            'col',
+            'cc',
+        },
+        ['cc'] = {
+            'trp',
+            'pvt',
+            'pfc',
+            'cpl',
+            'sgt',
+            'shs',
+            'sfc',
+            'msg',
+            'lt',
+            'ltc',
+            'cpt',
+            'maj',
+            'lc',
+            'col',
         }
     }
 }
