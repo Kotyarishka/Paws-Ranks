@@ -42,5 +42,5 @@ end)
 */
 
 hook.Add('OnPlayerChangedTeam', 'Paws.'..MODULE.uID..'.Change.Team', function(pPlayer, nBefore, nAfter)
-    MODULE.Ply:InitJob(pPlayer, nBefore, nAfter)
+    timer.Simple(5, function() MODULE.Ply:InitJob(pPlayer, nBefore, nAfter) end)
 end)
