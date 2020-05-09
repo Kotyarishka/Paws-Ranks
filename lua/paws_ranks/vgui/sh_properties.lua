@@ -7,11 +7,11 @@ properties.Add( "openrank", {
 	MenuIcon = "icon16/group_edit.png", -- The icon to display next to the property
 
 	Filter = function( self, ent ) -- A function that determines whether an entity is valid for this property
-		if ( !IsValid( ent ) and !ent:IsPlayer() ) then return false end
+		if ( !ent:IsPlayer() ) then return false end
 		
-        local tPermissions = cfg.Permissions[MODULE.API:GetRank(LocalPlayer())] or cfg.Permissions[LocalPlayer():GetUserGroup()] or {}
+        local tPermissions = cfg.Permissions[LocalPlayer():GetUserGroup()] or cfg.Permissions[MODULE.API:GetRank(LocalPlayer())] or {}
 
-        if table.HasValue(tPermissions, MODULE.API:GetRank(ent)) then
+        if table.HasValue(tPermissions, MODULE.API:GetRank(ent)) or table.HasValue(tPermissions, '*') then
             return true
         end
 
