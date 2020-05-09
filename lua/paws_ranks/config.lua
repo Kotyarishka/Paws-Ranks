@@ -18,7 +18,7 @@ MODULE.Config = {
             Rank = {
                 use = true, 
                 Config = {
-                    ['msg'] = 'MSG'
+                    ['cadet'] = 'Cadet'
                 },
             },
             Number = {
