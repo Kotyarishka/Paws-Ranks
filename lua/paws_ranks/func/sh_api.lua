@@ -49,7 +49,7 @@ function MODULE.API:GetRankFormatted(pPlayer)
     local tJob = RPExtraTeams[pPlayer:Team()]
     local tFactionConfig = MODULE.Config.Factions[tJob.faction] or MODULE.Config.Factions.Default
 
-    if tFactionConfig.Rank.Config[sRank] then
+    if tFactionConfig.Rank.Config[sRank] != nil then
         sRankToReturn = tFactionConfig.Rank.Config[sRank]
     else
         sRankToReturn = string.upper(sRankToReturn)
