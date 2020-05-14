@@ -50,7 +50,7 @@ function MODULE.API:GetRankFormatted(pPlayer)
     local tFactionConfig = MODULE.Config.Factions[tJob.faction] or MODULE.Config.Factions.Default
 
     if tFactionConfig.Rank.Config[sRankToReturn] != nil then
-        sRankToReturn = tFactionConfig.Rank.Config[sRank]
+        sRankToReturn = tFactionConfig.Rank.Config[sRankToReturn]
     else
         sRankToReturn = string.upper(sRankToReturn)
     end
