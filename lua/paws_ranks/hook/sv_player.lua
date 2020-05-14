@@ -26,7 +26,7 @@ end)
 */
 
 hook.Add('PlayerSpawn', 'Paws.'..MODULE.uID..'.Load.Player.RegularSpawn', function(pPlayer)
-    timer.Simple(5, function() MODULE.Ply:InitJob(pPlayer, pPlayer:Team(), pPlayer:Team()) end)
+    timer.Simple(.1, function() MODULE.Ply:InitJob(pPlayer, pPlayer:Team(), pPlayer:Team()) end)
 end)
 
 /*
@@ -42,5 +42,5 @@ end)
 */
 
 hook.Add('OnPlayerChangedTeam', 'Paws.'..MODULE.uID..'.Change.Team', function(pPlayer, nBefore, nAfter)
-    timer.Simple(5, function() MODULE.Ply:InitJob(pPlayer, nBefore, nAfter) end)
+    timer.Simple(.1, function() MODULE.Ply:InitJob(pPlayer, nBefore, nAfter) end)
 end)
